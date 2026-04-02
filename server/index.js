@@ -88,7 +88,7 @@ app.get('/api/leads', requireAuth, async (req, res) => {
 // --- Serve React app in production ---
 const clientDist = path.resolve(__dirname, '../client/dist');
 app.use(express.static(clientDist));
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(clientDist, 'index.html'));
 });
 
